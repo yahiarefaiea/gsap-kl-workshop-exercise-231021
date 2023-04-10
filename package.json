@@ -1,7 +1,10 @@
 {
-	"name": "tawkto-frontend-take-home",
+	"name": "challenge-frontend-developer-tawkto",
 	"version": "1.0.0",
+	"author": "Yahia Refaiea <hey@yahiarefaiea.com> (http://yahiarefaiea.com)",
+	"description": "",
 	"main": "index.js",
+	"private": true,
 	"scripts": {
 		"start": "webpack-dev-server --config webpack.config.js"
 	},
@@ -21,7 +24,5 @@
 	"dependencies": {
 		"axios": "^0.19.0",
 		"vue": "^2.6.11"
-	},
-	"author": "",
-	"description": ""
+	}
 }
