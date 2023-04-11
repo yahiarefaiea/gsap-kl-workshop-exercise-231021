@@ -34,9 +34,16 @@ $border-color: #eee;
 $border-radius: 4px;
 $bg-color: #fff;
 
+$text-placeholder-color: $text-gray;
+$text-normal-color: $text-black;
+
+// focus state
+$border-focus-color: $green;
+$bg-focus-color: rgba($green, .05);
+
 ::placeholder {
   opacity: 1;
-  color: $text-gray
+  color: $text-placeholder-color;
 }
 
 .field {
@@ -47,5 +54,10 @@ $bg-color: #fff;
   font-size: $font-size;
   line-height: $line-height;
   background-color: $bg-color;
+  color: $text-normal-color;
+  &:focus {
+    border-color: $border-focus-color;
+    background-color: $bg-focus-color;
+  }
 }
 </style>
