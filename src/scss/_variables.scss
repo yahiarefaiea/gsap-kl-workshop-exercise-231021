@@ -2,3 +2,20 @@ $font-family: 'Lato', Arial, Helvetica, sans-serif;
 $green: #03a84e;
 $text-black: #373737;
 $text-gray: #9C9AA6;
+$border-gray: #EEE;
+
+// field
+$field--line-height: 24px;
+$field--font-size: 16px;
+$field--padding-y: (60px - $field--line-height)*0.5;
+$field--padding-x: 22px;
+$field--border-size: 1px;
+$field--border-color: $border-gray;
+$field--border-radius: 4px;
+$field--bg-color: transparent;
+
+$field--text-placeholder-color: $text-gray;
+$field--text-normal-color: $text-black;
+
+$field--border-focus-color: $green;
+$field--bg-focus-color: rgba($green, .05);

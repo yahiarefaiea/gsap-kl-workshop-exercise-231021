@@ -25,39 +25,23 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 
-$line-height: 24px;
-$font-size: 16px;
-$padding-y: (60px - $line-height)*0.5;
-$padding-x: 22px;
-$border-size: 1px;
-$border-color: #eee;
-$border-radius: 4px;
-$bg-color: #fff;
-
-$text-placeholder-color: $text-gray;
-$text-normal-color: $text-black;
-
-// focus state
-$border-focus-color: $green;
-$bg-focus-color: rgba($green, .05);
-
 ::placeholder {
   opacity: 1;
-  color: $text-placeholder-color;
+  color: $field--text-placeholder-color;
 }
 
 .field {
-  padding: $padding-y $padding-x;
-  border: $border-size solid $border-color;
-  border-radius: $border-radius;
+  padding: $field--padding-y $field--padding-x;
+  border: $field--border-size solid $field--border-color;
+  border-radius: $field--border-radius;
   font-family: $font-family;
-  font-size: $font-size;
-  line-height: $line-height;
-  background-color: $bg-color;
-  color: $text-normal-color;
+  font-size: $field--font-size;
+  line-height: $field--line-height;
+  background-color: $field--bg-color;
+  color: $field--text-normal-color;
   &:focus {
-    border-color: $border-focus-color;
-    background-color: $bg-focus-color;
+    border-color: $field--border-focus-color;
+    background-color: $field--bg-focus-color;
   }
 }
 </style>
