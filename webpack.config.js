@@ -16,7 +16,12 @@ module.exports = {
 	module: {
 		rules: [{
 			test: /\.vue$/,
-			use: 'vue-loader'
+			use: {
+        loader: 'vue-loader',
+        options: {
+          prettify: false
+        }
+      }
 		},
 		{
 			test: /\.scss$/,
@@ -65,7 +70,7 @@ module.exports = {
 						author = dataObj.authors[index];
 						break;
 					}
-					
+
 				}
 				res.json(author);
 			});
