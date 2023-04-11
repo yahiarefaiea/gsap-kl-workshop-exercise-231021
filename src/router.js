@@ -6,17 +6,15 @@ import Category from './views/Category.vue'
 Vue.use(VueRouter)
 
 const baseUrl = '/docs'
-const routes = [
-  {
-    path: `${baseUrl}/`,
-    name: 'home',
-    component: Home
-  }, {
-    path: `${baseUrl}/:id`,
-    name: 'category',
-    component: Category
-  }
-]
+const routes = [{
+  path: `${baseUrl}/`,
+  name: 'home',
+  component: Home
+}, {
+  path: `${baseUrl}/:id`,
+  name: 'category',
+  component: Category
+}]
 
 const router = new VueRouter({
   mode: 'history',
