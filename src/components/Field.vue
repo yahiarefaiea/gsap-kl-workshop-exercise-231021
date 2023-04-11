@@ -1,12 +1,23 @@
 <template>
-<input class="field" :type="type" :placeholder="placeholder">
+<input class="field" :type="type" :placeholder="placeholder" v-model="computedValue">
 </template>
 
 <script>
 export default {
   props: {
+    value: {type: String, default: ''},
     type: {type: String, default: 'text'},
     placeholder: String
+  },
+  computed: {
+    computedValue: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('update:value', val)
+      }
+    }
   }
 }
 </script>
