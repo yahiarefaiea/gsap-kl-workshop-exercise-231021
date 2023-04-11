@@ -37,6 +37,7 @@ export default {
   font-family: $font-family;
   font-size: $field--font-size;
   line-height: $field--line-height;
+
   background-color: $field--bg-color;
   color: $field--text-normal-color;
   &:focus {
