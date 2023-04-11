@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<tawk-header></tawk-header>
-	</div>
+<div>
+	<tawk-header></tawk-header>
+</div>
 </template>
 
 <script>
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	@import 'scss/main.scss';
+@import 'scss/main.scss';
 </style>
