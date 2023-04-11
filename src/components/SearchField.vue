@@ -3,7 +3,7 @@
   <tawk-field
     :placeholder="'Search for answers'"
     :value="query"
-    @update:value="captureValue"
+    @update:value="setQueryValue"
     :style="{
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
@@ -37,12 +37,11 @@ export default {
     query: ''
   }),
   methods: {
-    captureValue(value) {
+    setQueryValue(value) {
       this.query = value
-      console.log(this.query)
     },
     submitSearchQuery() {
-      console.log('submitting..')
+      console.log(this.query)
     }
   }
 }
