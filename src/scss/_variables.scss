@@ -7,7 +7,7 @@ $border-gray: #EEE;
 // field
 $field--line-height: 24px;
 $field--font-size: 16px;
-$field--padding-y: (60px - $field--line-height)*0.5;
+$field--padding-y: (58px - $field--line-height)*0.5;
 $field--padding-x: 22px;
 $field--border-size: 1px;
 $field--border-color: $border-gray;
@@ -23,7 +23,7 @@ $field--bg-focus-color: rgba($green, .05);
 // button
 $button--line-height: $field--line-height;
 $button--font-size: $field--font-size;
-$button--padding-y: (60px - $button--line-height)*0.5;
+$button--padding-y: (58px - $button--line-height)*0.5;
 $button--padding-x: 22px;
 $button--border-size: 1px;
 $button--border-radius: $field--border-radius;
