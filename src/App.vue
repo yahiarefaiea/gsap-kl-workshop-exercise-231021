@@ -1,6 +1,7 @@
 <template>
 <div>
-  <tawk-header></tawk-header>
+  <tawk-header />
+  <router-view />
 </div>
 </template>
 
@@ -8,7 +9,7 @@
 import Header from './components/Header.vue'
 
 export default {
-  components:{
+  components: {
     'tawk-header': Header
   }
 }
