@@ -1,8 +1,8 @@
 <template>
 <div id="header-wrapper">
   <div id="header-text">
-    <h1>Knowledge base doesn't have to be boring</h1>
-    <h3>Everything you need to manage your messaging</h3>
+    <h1>Knowledge base doesn’t have to be boring</h1>
+    <h3>Everything you need to Manage your Messaging</h3>
   </div>
 </div>
 </template>
