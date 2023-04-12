@@ -46,7 +46,7 @@ h2, .text-primary, .text-gray {
 .text-gray {
   font-size: 11px;
   line-height: 13.2px;
-  color: $dark-gray;
+  color: $text-gray;
 }
 /* end of block */
 

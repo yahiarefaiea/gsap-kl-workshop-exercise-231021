@@ -111,6 +111,6 @@ p {
 
 .fallback {
   flex: 100%;
-  color: $dark-gray;
+  color: $text-gray;
 }
 </style>
