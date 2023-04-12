@@ -27,7 +27,9 @@ export default {
     searchQuery: ''
   }),
   computed: {
-    flexItemStyle: () => {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
+    flexItemStyle: () => {
+      return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
+    }
   },
   watch: {
     searchQuery() {
