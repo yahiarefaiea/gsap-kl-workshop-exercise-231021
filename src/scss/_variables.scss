@@ -6,6 +6,12 @@ $border-gray: #EEE;
 $dark-gray: #9C9AA6;
 $light-gray: #FAFAFA;
 
+// container
+$container--width: 985px;
+$container--padding-y: 60px;
+$container-grid--gap: 20px;
+$container-grid--width: $container--width + 20px;
+
 // field
 $field--line-height: 24px;
 $field--font-size: 16px;
@@ -35,3 +41,11 @@ $button--text-normal-color: #fff;
 
 $button--bg-focus-color: lighten($button--bg-normal-color, 5);
 $button--text-focus-color: $button--text-normal-color;
+
+// ui-card
+$ui-card--padding-y: 35px;
+$ui-card--padding-x: 20px;
+$ui-card--border-size: 1px;
+$ui-card--border-color: $border-gray;
+$ui-card--border-radius: 5px;
+$ui-card--bg-normal-color: #fff;
