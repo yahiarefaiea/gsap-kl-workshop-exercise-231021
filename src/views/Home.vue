@@ -22,11 +22,13 @@ export default {
     'tawk-ui-card': UICard
   },
   data: () => ({
-    flexItemStyle: {flex: `calc(${100/3}% - 20px)`, flexGrow: 0},
+    items: null,
     queryFilteredItems: null,
-    searchQuery: '',
-    items: null
+    searchQuery: ''
   }),
+  computed: {
+    flexItemStyle: () => {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
+  },
   watch: {
     searchQuery() {
       this.filterItemsBasedOnQuery()
@@ -39,12 +41,11 @@ export default {
       return items.filter(item => this.isEnabled(item))
     },
     filterItemsBasedOnQuery() {
-      this.queryFilteredItems = this.items.filter(item => {
-        return _.includes(
-          _.toLower(item.title),
-          _.toLower(this.searchQuery)
-        )
-      })
+      this.queryFilteredItems = this.items.filter(item => _.includes(
+        // converting strings below to lower case for the seek of a complete demo, nothing more..
+        _.toLower(item.title),
+        _.toLower(this.searchQuery)
+      ))
     },
     async fetchCategories() {
       axios.get('/api/categories')
