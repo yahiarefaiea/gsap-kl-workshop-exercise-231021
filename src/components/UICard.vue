@@ -1,5 +1,5 @@
 <template>
-<router-link class="ui-card" :to="`/${createSlug(item.title, item.id)}`">
+<router-link class="ui-card" :to="`/${slug}`">
   <img :src="`icons/${item.icon}.png`">
   <h2>{{item.title}}</h2>
   <span class="text-primary">{{item.totalArticle}} articles</span>
@@ -14,6 +14,12 @@ import slugify from 'slugify'
 export default {
   props: {
     item: {type: Object, required: true}
+  },
+  computed: {
+    slug() {
+      const {title, id} = this.item
+      return this.createSlug(title, id)
+    }
   },
   methods: {
     formatDate: timestamp => moment(timestamp).fromNow(),
