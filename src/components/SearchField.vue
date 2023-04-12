@@ -40,7 +40,7 @@ export default {
   methods: {
     setQueryValue(value) {
       this.query = value
-      this.submitSearchQuery()
+      eventBus.$emit('filter:items', this.query)
     },
     submitSearchQuery() {
       eventBus.$emit('filter:items', this.query)
