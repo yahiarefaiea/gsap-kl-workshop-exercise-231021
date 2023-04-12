@@ -27,6 +27,7 @@
 <script>
 import Field from './Field.vue'
 import Button from './Button.vue'
+import eventBus from '../utils/event-bus'
 
 export default {
   components: {
@@ -39,9 +40,10 @@ export default {
   methods: {
     setQueryValue(value) {
       this.query = value
+      this.submitSearchQuery()
     },
     submitSearchQuery() {
-      console.log(this.query)
+      eventBus.$emit('filter:items', this.query)
     }
   }
 }

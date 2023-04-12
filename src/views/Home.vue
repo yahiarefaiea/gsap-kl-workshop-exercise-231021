@@ -2,7 +2,7 @@
 <div class="section">
   <div class="container grid-view">
     <tawk-ui-card
-      v-for="item in items"
+      v-for="item in queryFilteredItems"
       :key="item.id"
       :item="item"
       :style="flexItemStyle"
@@ -12,8 +12,10 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import axios from 'axios'
 import UICard from '../components/UICard.vue'
+import eventBus from '../utils/event-bus'
 
 export default {
   components: {
@@ -21,25 +23,48 @@ export default {
   },
   data: () => ({
     flexItemStyle: {flex: `calc(${100/3}% - 20px)`, flexGrow: 0},
+    queryFilteredItems: null,
+    searchQuery: '',
     items: null
   }),
+  watch: {
+    searchQuery() {
+      this.filterItemsBasedOnQuery()
+    }
+  },
   methods: {
     isEnabled: item => item.enabled,
     orderItems: items => items.sort((a, b) => a.order - b.order),
     filterItems(items) {
       return items.filter(item => this.isEnabled(item))
     },
+    filterItemsBasedOnQuery() {
+      this.queryFilteredItems = this.items.filter(item => {
+        return _.includes(
+          _.toLower(item.title),
+          _.toLower(this.searchQuery)
+        )
+      })
+    },
     async fetchCategories() {
       axios.get('/api/categories')
         .then(response => {
           this.items = this.filterItems(response.data)
           this.items = this.orderItems(this.items)
+          this.queryFilteredItems = this.items
         })
         .catch(error => ({error: JSON.stringify(error)}))
+    },
+    onQueryChanged(val) {
+      this.searchQuery = val
     }
   },
   created() {
     this.fetchCategories()
+    eventBus.$on('filter:items', this.onQueryChanged);
+  },
+  destroyed() {
+    eventBus.$off('filter:items', this.onQueryChanged);
   }
 }
 </script>
