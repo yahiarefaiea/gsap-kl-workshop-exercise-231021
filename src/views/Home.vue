@@ -1,7 +1,14 @@
 <template>
 <div class="section">
   <div class="container grid-view">
+    <p v-if="!queryFilteredItems" class="fallback">
+      Loading..
+    </p>
+    <p v-else-if="queryFilteredItems && queryFilteredItems.length === 0" class="fallback">
+      {{`No items were found matching “${this.searchQuery}”.`}}
+    </p>
     <tawk-ui-card
+      v-else-if="queryFilteredItems && queryFilteredItems.length > 0"
       v-for="item in queryFilteredItems"
       :key="item.id"
       :item="item"
@@ -78,6 +85,12 @@ export default {
 // my apologies for the inconvenience...
 // the rules below should've been somewhere as shared styles.
 /* start of block */
+p {
+  font-family: $font-family;
+  text-align: center;
+  color: $text-black;
+}
+
 .section {
   background-color: $light-gray;
   .container {
@@ -95,4 +108,9 @@ export default {
   }
 }
 /* end of block */
+
+.fallback {
+  flex: 100%;
+  color: $dark-gray;
+}
 </style>
