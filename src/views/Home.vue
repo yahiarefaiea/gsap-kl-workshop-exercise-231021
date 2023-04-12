@@ -62,10 +62,10 @@ export default {
   },
   created() {
     this.fetchCategories()
-    eventBus.$on('filter:items', this.onQueryChanged);
+    eventBus.$on('filter:items', this.onQueryChanged)
   },
   destroyed() {
-    eventBus.$off('filter:items', this.onQueryChanged);
+    eventBus.$off('filter:items', this.onQueryChanged)
   }
 }
 </script>
