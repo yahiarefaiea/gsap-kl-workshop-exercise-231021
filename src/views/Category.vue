@@ -5,30 +5,43 @@
       :items="breadcrumbItems"
       :style="breadcrumbStyle"
     />
-    <div>
+
+    <div class="grid-view">
       <tawk-category-card
         v-if="!isEmpty(category)"
         :item="category"
         :type="'expanded'"
+        :style="categoryCardStyle"
       />
+
+      <div class="list-view">
+        <tawk-article-card
+          v-for="(article, index) in articles"
+          :key="`${kebabCase(article.title)}-${index}`"
+          :item="article"
+        />
+      </div>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-import {isEmpty} from 'lodash'
+import {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard.vue'
+import ArticleCard from '../components/ArticleCard.vue'
 
 export default {
   components: {
     'tawk-breadcrumb': Breadcrumb,
-    'tawk-category-card': CategoryCard
+    'tawk-category-card': CategoryCard,
+    'tawk-article-card': ArticleCard
   },
   data: () => ({
     isEmpty,
+    kebabCase,
     breadcrumbItems: [],
     category: {},
     articles: []
@@ -36,6 +49,9 @@ export default {
   computed: {
     breadcrumbStyle: () => {
       return {flex: 1, marginTop: `${21 - 60}px`, marginBottom: '22px'}
+    },
+    categoryCardStyle: () => {
+      return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     }
   },
   watch: {
@@ -77,7 +93,21 @@ export default {
   }
 }
 </script>
-<!--
+
 <style lang="scss" scoped>
+.section .grid-view {
+  align-items: flex-start;
+}
+</style>
+
+<!-- global styles -->
+<style lang="scss">
 @import '../scss/_variables.scss';
-</style> -->
+
+.section .list-view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $container-grid--gap;
+}
+</style>
