@@ -45,8 +45,8 @@ export default {
     }
   },
   methods: {
-    extractCategoryById() {
-      const path = this.$route.path
+    extractCategoryId() {
+      const {path} = this.$route
       // I'm sure there is a better way to extract the id below..
       return path.split('-').reverse()[0]
     },
@@ -59,7 +59,7 @@ export default {
     },
   },
   created() {
-    const id = this.extractCategoryById()
+    const id = this.extractCategoryId()
     this.fetchCategoryById(id)
     this.breadcrumbItems = [{
       title: 'All categories',
