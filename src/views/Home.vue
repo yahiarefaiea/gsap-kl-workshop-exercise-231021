@@ -109,6 +109,7 @@ p {
   .grid-view {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: $container-grid--gap;
     transform: translateX($container-grid--gap*0.5);
   }

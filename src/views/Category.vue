@@ -94,12 +94,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.section .grid-view {
-  align-items: flex-start;
-}
-</style>
-
 <!-- global styles -->
 <style lang="scss">
 @import '../scss/_variables.scss';
