@@ -37,6 +37,11 @@ export default {
   data: () => ({
     query: ''
   }),
+  watch: {
+    '$route.path': function() {
+      if(this.query) this.query = ''
+    }
+  },
   methods: {
     setQueryValue(value) {
       this.query = value
