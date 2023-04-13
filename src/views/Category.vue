@@ -9,7 +9,7 @@
       <tawk-ui-card
         v-if="!isEmpty(category)"
         :item="category"
-        :type="expanded"
+        :type="'expanded'"
       />
     </div>
   </div>
