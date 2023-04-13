@@ -7,7 +7,7 @@
     <h2 v-else-if="type === 'expanded'">{{item.title}}</h2>
 
     <span class="text-primary" v-if="type === 'default'">{{item.totalArticle}} articles</span>
-    <span class="text-gray">Last update {{formatDate(item.updatedOn)}}</span>
+    <span class="text-gray">Last update {{formatDateFromNow(item.updatedOn)}}</span>
   </div>
   <div class="block" v-if="type === 'expanded'">
     <p>{{item.description}}</p>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import {formatDateFromNow} from '../utils'
 import slugify from 'slugify'
 
 export default {
@@ -24,6 +24,9 @@ export default {
     item: {type: Object, required: true},
     type: {type: String, default: 'default'}
   },
+  data: () => ({
+    formatDateFromNow
+  }),
   computed: {
     slug() {
       const {title, id} = this.item
@@ -31,7 +34,6 @@ export default {
     }
   },
   methods: {
-    formatDate: timestamp => moment(timestamp).fromNow(),
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`
   }
 }

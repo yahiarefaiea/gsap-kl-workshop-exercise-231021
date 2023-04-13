@@ -1,7 +1,7 @@
-import formatDate from './format-date'
+import formatDateFromNow from './format-date-from-now'
 import eventBus from './event-bus'
 
 export {
-  formatDate,
+  formatDateFromNow,
   eventBus
 }
