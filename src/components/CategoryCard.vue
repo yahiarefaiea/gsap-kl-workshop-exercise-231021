@@ -43,6 +43,7 @@ export default {
 @import '../scss/_variables.scss';
 
 .category-card {
+  display: block;
   border: $category-card--border-size solid $category-card--border-color;
   border-radius: $category-card--border-radius;
   text-decoration: none;
