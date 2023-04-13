@@ -60,9 +60,9 @@ export default {
       text-decoration: none;
     }
     &:not(:first-child) {
-      margin-left: 13px;
+      margin-left: $breadcrumb--gap;
       &:before {
-        margin-right: 13px;
+        margin-right: $breadcrumb--gap;
         @extend .arrow-right;
       }
     }
