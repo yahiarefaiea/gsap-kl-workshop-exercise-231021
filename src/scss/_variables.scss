@@ -3,6 +3,7 @@ $green: #03a84e;
 $text-black: #373737;
 $text-gray: #9C9AA6;
 $border-gray: #EEE;
+$border-gray2: #D3D3D3;
 $light-gray: #FAFAFA;
 
 // container
@@ -40,6 +41,11 @@ $button--text-normal-color: #fff;
 
 $button--bg-focus-color: lighten($button--bg-normal-color, 5);
 $button--text-focus-color: $button--text-normal-color;
+
+// link
+$link--color: $green;
+$link--font-size: 13px;
+$link--line-height: 22px;
 
 // ui-card
 $ui-card--padding-y: 35px;
