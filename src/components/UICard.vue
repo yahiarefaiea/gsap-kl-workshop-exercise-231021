@@ -1,9 +1,14 @@
 <template>
 <router-link class="ui-card" :to="`/docs/${slug}`">
-  <img :src="`/icons/${item.icon}.png`">
-  <h2>{{item.title}}</h2>
-  <span class="text-primary">{{item.totalArticle}} articles</span>
-  <span class="text-gray">Last update {{formatDate(item.updatedOn)}}</span>
+  <div class="block">
+    <img :src="`/icons/${item.icon}.png`">
+
+    <h3 v-if="type === 'default'">{{item.title}}</h3>
+    <h2 v-else-if="type === 'expanded'">{{item.title}}</h2>
+
+    <span class="text-primary" v-if="type === 'default'">{{item.totalArticle}} articles</span>
+    <span class="text-gray">Last update {{formatDate(item.updatedOn)}}</span>
+  </div>
 </router-link>
 </template>
 
@@ -13,7 +18,8 @@ import slugify from 'slugify'
 
 export default {
   props: {
-    item: {type: Object, required: true}
+    item: {type: Object, required: true},
+    type: {type: String, default: 'default'}
   },
   computed: {
     slug() {
@@ -43,8 +49,9 @@ export default {
   img {
     margin-bottom: 25px;
   }
-  h2 {
+  h3 {
     margin-bottom: 21px;
+    font-weight: bold;
   }
 }
 </style>
@@ -53,7 +60,7 @@ export default {
 <style lang="scss">
 @import '../scss/_variables.scss';
 
-h2, .text-primary, .text-gray {
+h2, h3, .text-primary, .text-gray {
   font-family: $font-family;
   color: $text-black;
 }
