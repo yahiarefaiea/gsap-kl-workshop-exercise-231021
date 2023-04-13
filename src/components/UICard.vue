@@ -41,14 +41,19 @@ export default {
 @import '../scss/_variables.scss';
 
 .ui-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: $ui-card--padding-y $ui-card--padding-x;
   border: $ui-card--border-size solid $ui-card--border-color;
   border-radius: $ui-card--border-radius;
   text-decoration: none;
   background-color: $ui-card--bg-normal-color;
+  > .block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $ui-card--padding-y $ui-card--padding-x;
+    &:not(:first-child) {
+      border-top: $ui-card--border-size solid $ui-card--border-color;
+    }
+  }
   img {
     margin-bottom: 25px;
   }
