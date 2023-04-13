@@ -1,7 +1,10 @@
 <template>
 <nav class="breadcrumb">
   <ul>
-    <li v-for="(item, index) in items">
+    <li
+      v-for="(item, index) in items"
+      :key="`${kebabCase(item.title)}-${index}`"
+    >
       <router-link
         v-if="index !== items.length - 1"
         class="link"
@@ -16,10 +19,15 @@
 </template>
 
 <script>
+import {kebabCase} from 'lodash'
+
 export default {
   props: {
     items: {type: Array, required: true}
-  }
+  },
+  data: () => ({
+    kebabCase
+  })
 }
 </script>
 
