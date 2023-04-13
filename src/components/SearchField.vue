@@ -27,7 +27,7 @@
 <script>
 import Field from './Field.vue'
 import Button from './Button.vue'
-import eventBus from '../utils/event-bus'
+import {eventBus} from '../utils'
 
 export default {
   components: {

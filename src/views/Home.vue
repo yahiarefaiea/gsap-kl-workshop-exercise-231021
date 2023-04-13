@@ -22,7 +22,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 import CategoryCard from '../components/CategoryCard.vue'
-import eventBus from '../utils/event-bus'
+import {eventBus} from '../utils'
 
 export default {
   components: {
