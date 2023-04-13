@@ -1,6 +1,6 @@
 <template>
-<router-link class="ui-card" :to="`/${slug}`">
-  <img :src="`icons/${item.icon}.png`">
+<router-link class="ui-card" :to="`/docs/${slug}`">
+  <img :src="`/icons/${item.icon}.png`">
   <h2>{{item.title}}</h2>
   <span class="text-primary">{{item.totalArticle}} articles</span>
   <span class="text-gray">Last update {{formatDate(item.updatedOn)}}</span>
