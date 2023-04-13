@@ -105,13 +105,15 @@ p {
     max-width: $container--width;
     margin: 0 auto;
     padding: $container--padding-y 0;
-    &.grid-view {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $container-grid--gap;
-      max-width: $container-grid--width;
-      transform: translateX($container-grid--gap*0.5);
-    }
+  }
+  .grid-view {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $container-grid--gap;
+    transform: translateX($container-grid--gap*0.5);
+  }
+  .grid-view, .container.grid-view {
+    max-width: $container-grid--width;
   }
 }
 </style>
