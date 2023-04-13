@@ -31,25 +31,6 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 
-// my apologies for the inconvenience...
-// the rules below should've been somewhere as shared styles.
-/* start of block */
-h2, .text-primary, .text-gray {
-  font-family: $font-family;
-  color: $text-black;
-}
-.text-primary {
-  font-size: 13px;
-  line-height: 15.6px;
-  color: $green;
-}
-.text-gray {
-  font-size: 11px;
-  line-height: 13.2px;
-  color: $text-gray;
-}
-/* end of block */
-
 .ui-card {
   display: flex;
   flex-direction: column;
@@ -65,5 +46,25 @@ h2, .text-primary, .text-gray {
   h2 {
     margin-bottom: 21px;
   }
+}
+</style>
+
+<!-- global styles -->
+<style lang="scss">
+@import '../scss/_variables.scss';
+
+h2, .text-primary, .text-gray {
+  font-family: $font-family;
+  color: $text-black;
+}
+.text-primary {
+  font-size: 13px;
+  line-height: 15.6px;
+  color: $green;
+}
+.text-gray {
+  font-size: 11px;
+  line-height: 13.2px;
+  color: $text-gray;
 }
 </style>

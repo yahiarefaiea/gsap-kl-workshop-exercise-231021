@@ -79,12 +79,19 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+@import '../scss/_variables.scss';
+
+.fallback {
+  flex: 1;
+  color: $text-gray;
+}
+</style>
+
+<!-- global styles -->
 <style lang="scss">
 @import '../scss/_variables.scss';
 
-// my apologies for the inconvenience...
-// the rules below should've been somewhere as shared styles.
-/* start of block */
 p {
   font-family: $font-family;
   text-align: center;
@@ -106,11 +113,5 @@ p {
       transform: translateX($container-grid--gap*0.5);
     }
   }
-}
-/* end of block */
-
-.fallback {
-  flex: 100%;
-  color: $text-gray;
 }
 </style>
