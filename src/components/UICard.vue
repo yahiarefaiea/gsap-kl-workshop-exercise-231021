@@ -9,6 +9,9 @@
     <span class="text-primary" v-if="type === 'default'">{{item.totalArticle}} articles</span>
     <span class="text-gray">Last update {{formatDate(item.updatedOn)}}</span>
   </div>
+  <div class="block" v-if="type === 'expanded'">
+    <p>{{item.description}}</p>
+  </div>
 </router-link>
 </template>
 
@@ -55,6 +58,11 @@ export default {
   h3 {
     margin-bottom: 21px;
     font-weight: bold;
+  }
+  p {
+    font-size: 13px;
+    line-height: 18px;
+    color: $text-gray;
   }
 }
 </style>
