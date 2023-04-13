@@ -49,6 +49,9 @@ export default {
   img {
     margin-bottom: 25px;
   }
+  h2, h3 {
+    text-align: center;
+  }
   h3 {
     margin-bottom: 21px;
     font-weight: bold;
