@@ -12,7 +12,7 @@
       v-for="item in queryFilteredItems"
       :key="item.id"
       :item="item"
-      :style="flexItemStyle"
+      :style="uiCardStyle"
     />
   </div>
 </div>
@@ -34,7 +34,7 @@ export default {
     searchQuery: ''
   }),
   computed: {
-    flexItemStyle: () => {
+    uiCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     }
   },
