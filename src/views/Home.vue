@@ -7,12 +7,12 @@
     <p v-else-if="queryFilteredItems && queryFilteredItems.length === 0" class="fallback">
       {{`No items were found matching “${this.searchQuery}”.`}}
     </p>
-    <tawk-ui-card
+    <tawk-category-card
       v-else-if="queryFilteredItems && queryFilteredItems.length > 0"
       v-for="item in queryFilteredItems"
       :key="item.id"
       :item="item"
-      :style="uiCardStyle"
+      :style="categoryCardStyle"
     />
   </div>
 </div>
@@ -21,12 +21,12 @@
 <script>
 import _ from 'lodash'
 import axios from 'axios'
-import UICard from '../components/UICard.vue'
+import CategoryCard from '../components/CategoryCard.vue'
 import eventBus from '../utils/event-bus'
 
 export default {
   components: {
-    'tawk-ui-card': UICard
+    'tawk-category-card': CategoryCard
   },
   data: () => ({
     items: null,
@@ -34,7 +34,7 @@ export default {
     searchQuery: ''
   }),
   computed: {
-    uiCardStyle: () => {
+    categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     }
   },

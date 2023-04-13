@@ -1,5 +1,5 @@
 <template>
-<router-link class="ui-card" :to="`/docs/${slug}`">
+<router-link class="category-card" :to="`/docs/${slug}`">
   <div class="block">
     <img :src="`/icons/${item.icon}.png`">
 
@@ -40,18 +40,18 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 
-.ui-card {
-  border: $ui-card--border-size solid $ui-card--border-color;
-  border-radius: $ui-card--border-radius;
+.category-card {
+  border: $category-card--border-size solid $category-card--border-color;
+  border-radius: $category-card--border-radius;
   text-decoration: none;
-  background-color: $ui-card--bg-normal-color;
+  background-color: $category-card--bg-normal-color;
   > .block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: $ui-card--padding-y $ui-card--padding-x;
+    padding: $category-card--padding-y $category-card--padding-x;
     &:not(:first-child) {
-      border-top: $ui-card--border-size solid $ui-card--border-color;
+      border-top: $category-card--border-size solid $category-card--border-color;
     }
   }
   img {

@@ -6,7 +6,7 @@
       :style="breadcrumbStyle"
     />
     <div>
-      <tawk-ui-card
+      <tawk-category-card
         v-if="!isEmpty(category)"
         :item="category"
         :type="'expanded'"
@@ -20,12 +20,12 @@
 import {isEmpty} from 'lodash'
 import axios from 'axios'
 import Breadcrumb from '../components/Breadcrumb.vue'
-import UICard from '../components/UICard.vue'
+import CategoryCard from '../components/CategoryCard.vue'
 
 export default {
   components: {
     'tawk-breadcrumb': Breadcrumb,
-    'tawk-ui-card': UICard
+    'tawk-category-card': CategoryCard
   },
   data: () => ({
     isEmpty,
