@@ -30,7 +30,8 @@ export default {
   data: () => ({
     isEmpty,
     breadcrumbItems: [],
-    category: {}
+    category: {},
+    articles: []
   }),
   computed: {
     breadcrumbStyle: () => {
@@ -57,10 +58,18 @@ export default {
         })
         .catch(error => ({error: JSON.stringify(error)}))
     },
+    async fetchArticles() {
+      axios.get('/api/category/')
+        .then(response => {
+          this.articles = response.data.filter(item => item.status === 'published')
+        })
+        .catch(error => ({error: JSON.stringify(error)}))
+    }
   },
   created() {
     const id = this.extractCategoryId()
     this.fetchCategoryById(id)
+    this.fetchArticles()
     this.breadcrumbItems = [{
       title: 'All categories',
       path: '/'
