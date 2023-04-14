@@ -55,7 +55,6 @@ export default {
     items: null,
     queryFilteredItems: null,
     searchQuery: '',
-    // category: {},
     articles: []
   }),
   computed: {
@@ -93,18 +92,6 @@ export default {
         })
         .catch(error => ({error: JSON.stringify(error)}))
     },
-    // extractCategoryId() {
-    //   const {path} = this.$route
-    //   // I'm sure there is a better way to extract the id below..
-    //   return path.split('-').reverse()[0]
-    // },
-    // async fetchCategoryById(id) {
-    //   axios.get('/api/categories')
-    //     .then(response => {
-    //       this.category = response.data.filter(item => item.id === id)[0]
-    //     })
-    //     .catch(error => ({error: JSON.stringify(error)}))
-    // },
     async fetchArticles() {
       axios.get('/api/category/')
         .then(response => {
@@ -120,8 +107,6 @@ export default {
     this.fetchCategories()
     eventBus.$on('filter:items', this.onQueryChanged)
 
-    // const id = this.extractCategoryId()
-    // this.fetchCategoryById(id)
     this.fetchArticles()
     this.breadcrumbItems = [{
       title: 'All categories',
