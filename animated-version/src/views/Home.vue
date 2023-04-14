@@ -1,5 +1,26 @@
 <template>
 <div class="section">
+  <div class="container">
+    <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
+
+    <div class="grid-view">
+      <tawk-category-card
+        v-if="!isEmpty(queryFilteredItems[0])"
+        :item="queryFilteredItems[0]"
+        :type="'expanded'"
+        :style="categoryCardStyle"
+      />
+
+      <div class="list-view">
+        <tawk-article-card
+          v-for="(article, index) in articles"
+          :key="`${kebabCase(article.title)}-${index}`"
+          :item="article"
+        />
+      </div>
+    </div>
+  </div>
+
   <div class="container grid-view">
     <p v-if="!queryFilteredItems" class="fallback">
       Loading..
@@ -19,21 +40,33 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
+import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard.vue'
+import ArticleCard from '../components/ArticleCard.vue'
 import {eventBus} from '../utils'
 
 export default {
   components: {
-    'tawk-category-card': CategoryCard
+    'tawk-breadcrumb': Breadcrumb,
+    'tawk-category-card': CategoryCard,
+    'tawk-article-card': ArticleCard
   },
   data: () => ({
+    isEmpty,
+    kebabCase,
+    breadcrumbItems: [],
     items: null,
     queryFilteredItems: null,
-    searchQuery: ''
+    searchQuery: '',
+    // category: {},
+    articles: []
   }),
   computed: {
+    breadcrumbStyle: () => {
+      return {flex: 1, marginTop: `${21 - 60}px`, marginBottom: '22px'}
+    },
     categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     }
@@ -65,6 +98,25 @@ export default {
         })
         .catch(error => ({error: JSON.stringify(error)}))
     },
+    // extractCategoryId() {
+    //   const {path} = this.$route
+    //   // I'm sure there is a better way to extract the id below..
+    //   return path.split('-').reverse()[0]
+    // },
+    // async fetchCategoryById(id) {
+    //   axios.get('/api/categories')
+    //     .then(response => {
+    //       this.category = response.data.filter(item => item.id === id)[0]
+    //     })
+    //     .catch(error => ({error: JSON.stringify(error)}))
+    // },
+    async fetchArticles() {
+      axios.get('/api/category/')
+        .then(response => {
+          this.articles = response.data.filter(item => item.status === 'published')
+        })
+        .catch(error => ({error: JSON.stringify(error)}))
+    },
     onQueryChanged(val) {
       this.searchQuery = val
     }
@@ -72,6 +124,14 @@ export default {
   created() {
     this.fetchCategories()
     eventBus.$on('filter:items', this.onQueryChanged)
+
+    // const id = this.extractCategoryId()
+    // this.fetchCategoryById(id)
+    this.fetchArticles()
+    this.breadcrumbItems = [{
+      title: 'All categories',
+      path: '/'
+    }]
   },
   destroyed() {
     eventBus.$off('filter:items', this.onQueryChanged)
@@ -85,6 +145,10 @@ export default {
 .fallback {
   flex: 1;
   color: $text-gray;
+}
+
+.section .container .grid-view {
+  transform: translateX(0);
 }
 </style>
 
@@ -115,6 +179,12 @@ p {
   }
   .grid-view, .container.grid-view {
     max-width: $container-grid--width;
+  }
+  .list-view {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: $container-grid--gap;
   }
 }
 </style>
