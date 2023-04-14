@@ -70,8 +70,7 @@ export default {
         top: 0,
         left: '50%',
         width: '985px',
-        marginLeft: `${-985/2}px`,
-        backgroundColor: 'red'
+        marginLeft: `${-985/2}px`
       }
     }
   },
