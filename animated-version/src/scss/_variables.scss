@@ -1,0 +1,67 @@
+$font-family: 'Lato', Arial, Helvetica, sans-serif;
+$green: #03a84e;
+$text-black: #373737;
+$text-gray: #9C9AA6;
+$border-gray: #EEE;
+$border-gray2: #D3D3D3;
+$light-gray: #FAFAFA;
+
+// container
+$container--width: 985px;
+$container--padding-y: 60px;
+$container-grid--gap: 20px;
+$container-grid--width: $container--width + 20px;
+
+// field
+$field--line-height: 24px;
+$field--font-size: 16px;
+$field--padding-y: (58px - $field--line-height)*0.5;
+$field--padding-x: 22px;
+$field--border-size: 1px;
+$field--border-color: $border-gray;
+$field--border-radius: 4px;
+$field--bg-color: transparent;
+
+$field--text-placeholder-color: $text-gray;
+$field--text-normal-color: $text-black;
+
+$field--border-focus-color: $green;
+$field--bg-focus-color: rgba($green, .05);
+
+// button
+$button--line-height: $field--line-height;
+$button--font-size: $field--font-size;
+$button--padding-y: (58px - $button--line-height)*0.5;
+$button--padding-x: 22px;
+$button--border-size: 1px;
+$button--border-radius: $field--border-radius;
+
+$button--bg-normal-color: $green;
+$button--text-normal-color: #fff;
+
+$button--bg-focus-color: lighten($button--bg-normal-color, 5);
+$button--text-focus-color: $button--text-normal-color;
+
+// link
+$link--color: $green;
+$link--font-size: 13px;
+$link--line-height: 22px;
+
+// category-card
+$category-card--padding-y: 35px;
+$category-card--padding-x: 30px;
+$category-card--border-size: 1px;
+$category-card--border-color: $border-gray;
+$category-card--border-radius: 5px;
+$category-card--bg-normal-color: #fff;
+
+// article-card
+$article-card--padding-y: 20px;
+$article-card--padding-x: 80px;
+$article-card--border-size: $category-card--border-size;
+$article-card--border-color: $category-card--border-color;
+$article-card--border-radius: 4px;
+$article-card--bg-normal-color: $category-card--bg-normal-color;
+
+// breadcrumb
+$breadcrumb--gap: 13px;
