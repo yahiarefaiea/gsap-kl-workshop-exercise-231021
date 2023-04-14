@@ -41,10 +41,6 @@ export default {
     color: $green;
     font-size: 20px;
     line-height: 24px;
-    &-chevron-right {
-      left: auto;
-      right: 32px;
-    }
     // the properties below turn fill icons into outlines! Magic.
     // &:not(.fa-chevron-right) {
     //   font-size: 18px;
@@ -52,6 +48,10 @@ export default {
     //   -webkit-text-stroke-color: $green;
     //   -webkit-text-fill-color: transparent;
     // }
+    &-chevron-right {
+      left: auto;
+      right: 32px;
+    }
   }
 }
 </style>
