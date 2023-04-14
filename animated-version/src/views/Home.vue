@@ -4,12 +4,7 @@
     <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
     <div class="grid-view">
-      <tawk-category-card
-        v-if="!isEmpty(queryFilteredItems[0])"
-        :item="queryFilteredItems[0]"
-        :type="'expanded'"
-        :style="categoryCardStyle"
-      />
+      <div :style="categoryCardStyle" />
 
       <div class="list-view">
         <tawk-article-card
