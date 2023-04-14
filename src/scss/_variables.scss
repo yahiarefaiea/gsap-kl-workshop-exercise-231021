@@ -55,5 +55,13 @@ $category-card--border-color: $border-gray;
 $category-card--border-radius: 5px;
 $category-card--bg-normal-color: #fff;
 
+// article-card
+$article-card--padding-y: 20px;
+$article-card--padding-x: 80px;
+$article-card--border-size: $category-card--border-size;
+$article-card--border-color: $category-card--border-color;
+$article-card--border-radius: 4px;
+$article-card--bg-normal-color: $category-card--bg-normal-color;
+
 // breadcrumb
 $breadcrumb--gap: 13px;
