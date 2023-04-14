@@ -1,10 +1,7 @@
 <template>
 <div class="section">
   <div class="container">
-    <tawk-breadcrumb
-      :items="breadcrumbItems"
-      :style="breadcrumbStyle"
-    />
+    <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
     <div class="grid-view">
       <tawk-category-card
@@ -93,6 +90,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.section .grid-view {
+  transform: translateX(0);
+}
+</style>
 
 <!-- global styles -->
 <style lang="scss">
