@@ -1,6 +1,6 @@
 <template>
 <div class="section">
-  <div class="container">
+  <div class="container" :style="containerStyle">
     <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
     <div class="grid-view">
@@ -63,6 +63,16 @@ export default {
     },
     categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
+    },
+    containerStyle: () => {
+      return {
+        position: 'absolute',
+        top: 0,
+        left: '50%',
+        width: '985px',
+        marginLeft: `${-985/2}px`,
+        backgroundColor: 'red'
+      }
     }
   },
   watch: {
@@ -143,6 +153,7 @@ p {
 }
 
 .section {
+  position: relative;
   background-color: $light-gray;
   .container {
     position: relative;
