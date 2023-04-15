@@ -1,5 +1,10 @@
 <template>
-<router-link class="category-card" :to="`/docs/${slug}`">
+<a
+  class="category-card"
+  :href="`#${slug}`"
+  ref="categoryCard"
+  @click="handleItemClick"
+>
   <div class="block">
     <img :src="`/icons/${item.icon}.png`">
 
@@ -12,10 +17,11 @@
   <div class="block" v-if="type === 'expanded'">
     <p>{{item.description}}</p>
   </div>
-</router-link>
+</a>
 </template>
 
 <script>
+import {gsap} from 'gsap'
 import {formatDateFromNow} from '../utils'
 import slugify from 'slugify'
 
@@ -25,7 +31,8 @@ export default {
     type: {type: String, default: 'default'}
   },
   data: () => ({
-    formatDateFromNow
+    formatDateFromNow,
+    timeline: null
   }),
   computed: {
     slug() {
@@ -34,7 +41,39 @@ export default {
     }
   },
   methods: {
-    createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`
+    createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
+    replaceCardWithPlaceholder(item) {
+      const replacement = document.createElement('div')
+      replacement.textContent = 'New Sibling Div'
+      replacement.style.flex = `calc(${100/3}% - 20px)`
+      replacement.style.flexGrow = 0
+      replacement.style.visibility = 'hidden'
+      replacement.style.opacity = 0
+      item.insertAdjacentElement('afterend', replacement)
+    },
+    moveCard(item) {
+      const width = gsap.getProperty(item, 'offsetWidth')
+      const height = gsap.getProperty(item, 'offsetHeight')
+      const top = gsap.getProperty(item, 'offsetTop')
+      const left = gsap.getProperty(item, 'offsetLeft')
+      gsap.set(item, {position: 'absolute', top, left, width, height})
+
+      this.timeline = gsap.timeline()
+      this.timeline.to(item, {
+        duration: 0.7,
+        ease: 'Power3.easeOut',
+        position: 'absolute',
+        top: 65,
+        left: 0,
+        transform: 'translate(-50%, -50%)'
+      })
+    },
+    handleItemClick() {
+      this.$emit('click', this.item)
+      const cardRef = this.$refs.categoryCard
+      this.replaceCardWithPlaceholder(cardRef)
+      this.moveCard(cardRef)
+    }
   }
 }
 </script>

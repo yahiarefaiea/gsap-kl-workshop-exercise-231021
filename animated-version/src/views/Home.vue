@@ -29,6 +29,8 @@
       :key="item.id"
       :item="item"
       :style="categoryCardStyle"
+      ref="categoryCards"
+      @click="hideSiblings(item)"
     />
   </div>
 </div>
@@ -37,6 +39,7 @@
 <script>
 import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
+import {gsap} from 'gsap'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard.vue'
 import ArticleCard from '../components/ArticleCard.vue'
@@ -55,6 +58,8 @@ export default {
     items: null,
     queryFilteredItems: null,
     searchQuery: '',
+    timeline: null,
+    category: {},
     articles: []
   }),
   computed: {
@@ -77,6 +82,16 @@ export default {
   watch: {
     searchQuery() {
       this.filterItemsBasedOnQuery()
+    },
+    category() {
+      this.breadcrumbItems = [this.breadcrumbItems[0], {
+        title: this.category.title
+      }]
+    },
+    '$route.hash': function() {
+      const id = this.extractCategoryId()
+      this.fetchCategoryById(id)
+      this.fetchArticles()
     }
   },
   methods: {
@@ -101,6 +116,14 @@ export default {
         })
         .catch(error => ({error: JSON.stringify(error)}))
     },
+    extractCategoryId() {
+      const {hash} = this.$route
+      // I'm sure there is a better way to extract the id below..
+      return hash.split('-').reverse()[0]
+    },
+    async fetchCategoryById(id) {
+      this.category = this.queryFilteredItems.filter(item => item.id === id)[0]
+    },
     async fetchArticles() {
       axios.get('/api/category/')
         .then(response => {
@@ -110,13 +133,21 @@ export default {
     },
     onQueryChanged(val) {
       this.searchQuery = val
+    },
+    hideSiblings(item) {
+      const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
+      const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
+      this.timeline = gsap.timeline()
+      this.timeline.staggerTo(siblings, 0.5, {
+        ease: 'Power3.easeOut',
+        opacity: 0
+      }, 0.2)
     }
   },
   created() {
     this.fetchCategories()
     eventBus.$on('filter:items', this.onQueryChanged)
 
-    this.fetchArticles()
     this.breadcrumbItems = [{
       title: 'All categories',
       path: '/'
@@ -165,6 +196,7 @@ p {
     flex-wrap: wrap;
     align-items: flex-start;
     gap: $container-grid--gap;
+    position: relative;
     transform: translateX($container-grid--gap*0.5);
   }
   .grid-view, .container.grid-view {
