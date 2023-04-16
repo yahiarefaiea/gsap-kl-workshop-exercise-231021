@@ -33,6 +33,7 @@ export default {
   data: () => ({
     formatDateFromNow,
     coordinates: {},
+    replacement: null,
     timeline: null
   }),
   computed: {
@@ -44,13 +45,14 @@ export default {
   methods: {
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
     replaceCardWithPlaceholder(item) {
-      const replacement = document.createElement('div')
-      replacement.textContent = 'New Sibling Div'
-      replacement.style.flex = `calc(${100/3}% - 20px)`
-      replacement.style.flexGrow = 0
-      replacement.style.visibility = 'hidden'
-      replacement.style.opacity = 0
-      item.insertAdjacentElement('afterend', replacement)
+      if(!this.replacement) {
+        this.replacement = document.createElement('div')
+        this.replacement.style.flex = `calc(${100/3}% - 20px)`
+        this.replacement.style.flexGrow = 0
+        this.replacement.style.visibility = 'hidden'
+        this.replacement.style.opacity = 0
+        item.insertAdjacentElement('afterend', this.replacement)
+      } else return
     },
     getCoordinates(item) {
       this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
