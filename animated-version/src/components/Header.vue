@@ -23,6 +23,7 @@ export default {
 
 #header-wrapper {
   padding: 54px 20px 74px;
+  background-color: #fff;
 }
 
 #header-text {
