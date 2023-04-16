@@ -5,13 +5,13 @@
       v-for="(item, index) in items"
       :key="`${kebabCase(item.title)}-${index}`"
     >
-      <router-link
+      <a
         v-if="index !== items.length - 1"
         class="link"
-        :to="item.path"
+        href="fallback.html"
       >
         {{item.title}}
-      </router-link>
+      </a>
       <template v-else>{{item.title}}</template>
     </li>
   </ul>
