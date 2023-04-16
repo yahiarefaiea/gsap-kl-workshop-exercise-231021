@@ -116,6 +116,10 @@ export default {
         })
         .catch(error => ({error: JSON.stringify(error)}))
     },
+    cleanUrl() {
+      const {path} = this.$route
+      this.$router.push(path)
+    },
     extractCategoryId() {
       const {hash} = this.$route
       // I'm sure there is a better way to extract the id below..
@@ -145,6 +149,7 @@ export default {
     }
   },
   created() {
+    this.cleanUrl()
     this.fetchCategories()
     eventBus.$on('filter:items', this.onQueryChanged)
 
