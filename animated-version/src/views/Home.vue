@@ -1,6 +1,10 @@
 <template>
 <div class="section">
-  <div class="container" :style="containerStyle">
+  <div
+    class="container"
+    ref="articlesContainer"
+    :style="containerStyle"
+  >
     <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
     <div class="grid-view">
@@ -148,6 +152,8 @@ export default {
     hideSiblings(siblings) {
       this.timeline = gsap.timeline({
         onComplete: () => {
+          const container = this.$refs.articlesContainer
+          gsap.set(container, {zIndex: 10})
           gsap.set(siblings, {visibility: 'hidden'})
         }
       })
