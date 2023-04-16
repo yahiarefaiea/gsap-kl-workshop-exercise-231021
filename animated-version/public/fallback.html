@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tawk.to Take Home Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      padding-left: 63px;
+      font-family: 'Mulish', 'Sofia Pro',"Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      background-color: #e4e0d4;
+      color: #353238;
+    }
+    #flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    h1 {
+      font-family: 'Playfair Display',Georgia, Times, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: 35px;
+      line-height: 49px;
+      letter-spacing: 1.5px;
+    }
+    p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 35px;
+    }
+    small {
+      font-size: 14px;
+      line-height: 28px;
+    }
+    a {
+      position: relative;
+      text-decoration: none;
+      color: #353238;
+    }
+    a::before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #353238;
+    }
+    a:hover::before {
+      left: -2px;
+      right: -2px;
+      height: 20px;
+      opacity: 0.35;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="flex">
+    <h1>
+      The “Back” button is<br>
+      temporarily disabled.
+    </h1>
+    <p>
+      Click <a href="/">here</a> to play the animation again.
+    </p>
+    <small>Bye ^^</small>
+  </div>
+</body>
+
+</html>
