@@ -128,8 +128,8 @@ export default {
         .catch(error => ({error: JSON.stringify(error)}))
     },
     cleanUrl() {
-      const {path} = this.$route
-      this.$router.push(path)
+      const {path, hash} = this.$route
+      if(hash) this.$router.push(path)
     },
     extractCategoryId() {
       const {hash} = this.$route
