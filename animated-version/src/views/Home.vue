@@ -90,8 +90,10 @@ export default {
     },
     '$route.hash': function() {
       const id = this.extractCategoryId()
-      this.fetchCategoryById(id)
-      this.fetchArticles()
+      if(!!id) {
+        this.fetchCategoryById(id)
+        this.fetchArticles()
+      }
     }
   },
   methods: {
