@@ -15,6 +15,8 @@
           v-for="(article, index) in articles"
           :key="`${kebabCase(article.title)}-${index}`"
           :item="article"
+          ref="articleCards"
+          :style="articleCardStyle"
         />
       </div>
     </div>
@@ -72,6 +74,9 @@ export default {
     },
     categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
+    },
+    articleCardStyle: () => {
+      return {visibility: 'hidden', opacity: 0}
     },
     containerStyle: () => {
       return {
@@ -153,8 +158,16 @@ export default {
       this.timeline = gsap.timeline({
         onComplete: () => {
           const container = this.$refs.articlesContainer
+          const articles = this.$refs.articleCards.map(article => article.$el)
           gsap.set(container, {zIndex: 10})
           gsap.set(siblings, {visibility: 'hidden'})
+          gsap.set(articles, {visibility: 'visible'})
+
+          const timeline = gsap.timeline()
+          timeline.staggerTo(articles, 0.5, {
+            ease: 'Power3.easeOut',
+            opacity: 1
+          }, 0.2)
         }
       })
       this.timeline.staggerTo(siblings, 0.5, {
