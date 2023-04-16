@@ -143,6 +143,7 @@ export default {
     handleCategoryClick(item) {
       const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
       const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
+      this.hideSiblings(siblings)
     },
     hideSiblings(siblings) {
       this.timeline = gsap.timeline()
