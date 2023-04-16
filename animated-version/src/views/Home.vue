@@ -146,7 +146,11 @@ export default {
       this.hideSiblings(siblings)
     },
     hideSiblings(siblings) {
-      this.timeline = gsap.timeline()
+      this.timeline = gsap.timeline({
+        onComplete: () => {
+          gsap.set(siblings, {visibility: 'hidden'})
+        }
+      })
       this.timeline.staggerTo(siblings, 0.5, {
         ease: 'Power3.easeOut',
         opacity: 0
