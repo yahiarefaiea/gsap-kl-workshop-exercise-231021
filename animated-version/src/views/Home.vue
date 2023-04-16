@@ -30,7 +30,7 @@
       :item="item"
       :style="categoryCardStyle"
       ref="categoryCards"
-      @click="hideSiblings(item)"
+      @click="handleCategoryClick(item)"
     />
   </div>
 </div>
@@ -140,9 +140,11 @@ export default {
     onQueryChanged(val) {
       this.searchQuery = val
     },
-    hideSiblings(item) {
+    handleCategoryClick(item) {
       const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
       const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
+    },
+    hideSiblings(siblings) {
       this.timeline = gsap.timeline()
       this.timeline.staggerTo(siblings, 0.5, {
         ease: 'Power3.easeOut',
