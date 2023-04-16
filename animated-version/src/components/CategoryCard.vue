@@ -3,7 +3,7 @@
   class="category-card"
   :href="`#${slug}`"
   ref="categoryCard"
-  @click="handleItemClick"
+  @click="handleCategoryClick"
 >
   <div class="block">
     <img :src="`/icons/${item.icon}.png`">
@@ -32,6 +32,7 @@ export default {
   },
   data: () => ({
     formatDateFromNow,
+    coordinates: {},
     timeline: null
   }),
   computed: {
@@ -51,13 +52,15 @@ export default {
       replacement.style.opacity = 0
       item.insertAdjacentElement('afterend', replacement)
     },
+    getCoordinates(item) {
+      this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
+      this.coordinates.height = gsap.getProperty(item, 'offsetHeight')
+      this.coordinates.top = gsap.getProperty(item, 'offsetTop')
+      this.coordinates.left = gsap.getProperty(item, 'offsetLeft')
+    },
     moveCard(item) {
-      const width = gsap.getProperty(item, 'offsetWidth')
-      const height = gsap.getProperty(item, 'offsetHeight')
-      const top = gsap.getProperty(item, 'offsetTop')
-      const left = gsap.getProperty(item, 'offsetLeft')
-      gsap.set(item, {position: 'absolute', top, left, width, height})
-
+      const {width, height, top, left} = this.coordinates
+      gsap.set(item, {position: 'absolute', width, height, top, left})
       this.timeline = gsap.timeline()
       this.timeline.to(item, {
         duration: 0.7,
@@ -68,10 +71,11 @@ export default {
         transform: 'translate(-50%, -50%)'
       })
     },
-    handleItemClick() {
+    handleCategoryClick() {
       this.$emit('click', this.item)
       const cardRef = this.$refs.categoryCard
       this.replaceCardWithPlaceholder(cardRef)
+      this.getCoordinates(cardRef)
       this.moveCard(cardRef)
     }
   }
