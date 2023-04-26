@@ -1,5 +1,5 @@
 <template>
-  <lottie ref="flyingParrot" :options="animationOptions" />
+  <lottie ref="flyingParrot" :options="options" />
 </template>
 
 <script>
@@ -9,7 +9,7 @@ import animationData from '../assets/animations/flying-parrot.json'
 export default {
   components: {Lottie},
   data: () => ({
-    animationOptions: {
+    options: {
       animationData,
       renderer: 'html',
       loop: true,
