@@ -1,5 +1,5 @@
 # A Take-Home Challenge at tawk.to as a Front-end Developer
-Please refer to the [`./README.old.md`](https://github.com/yahiarefaiea/challenge-software-engineer-supa/blob/main/README.old.md) file (and [this PDF file](https://github.com/yahiarefaiea/challenge-software-engineer-supa/blob/main/resources/frontend-test.pdf) as well) for more details about the challenge.
+Please refer to the [`./default-version/README.md`](https://github.com/yahiarefaiea/challenge-software-engineer-supa/blob/main/default-version/README.md) file (and [this PDF file](https://github.com/yahiarefaiea/challenge-software-engineer-supa/blob/main/resources/frontend-test.pdf) as well) for more details about the challenge.
 
 
 There are two standalone versions, a `default-version`, which covers the requirements, and an `animated-version`, which covers some extra animations. Both versions followed the same [provided design files](https://www.figma.com/file/AeDrzKULFKrTRzrH5WkMgU/Frontend-Test-1), and there's no major difference in the codebase—except in the `./src/views` directory, and most of the functionality works the same—except for some missing ones. (like a “Back” button.)
