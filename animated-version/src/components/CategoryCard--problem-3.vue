@@ -2,9 +2,9 @@
 <a
   class="category-card"
   :href="`#${slug}`"
-  ref="categoryCard"
-  @click="handleCategoryClick"
 >
+  <!-- ref="categoryCard"
+  @click="handleCategoryClick" -->
   <div class="block">
     <img :src="`/icons/${item.icon}.png`">
 
@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
-    handleCategoryClick() {
-      this.$emit('click', this.item)
-      const cardRef = this.$refs.categoryCard
-    }
+    // handleCategoryClick() {
+    //   this.$emit('click', this.item)
+    //   const cardRef = this.$refs.categoryCard
+    // }
   }
 }
 </script>

@@ -32,9 +32,9 @@
       :key="item.id"
       :item="item"
       :style="categoryCardStyle"
-      ref="categoryCards"
-      @click="handleCategoryClick(item)"
     />
+      <!-- ref="categoryCards"
+      @click="handleCategoryClick(item)" -->
   </div>
 </div>
 </template>
@@ -42,7 +42,7 @@
 <script>
 import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
-import {gsap} from 'gsap'
+// import {gsap} from 'gsap'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard--problem-6.vue'
 import ArticleCard from '../components/ArticleCard.vue'
@@ -61,7 +61,7 @@ export default {
     items: null,
     queryFilteredItems: null,
     searchQuery: '',
-    timeline: null,
+    // timeline: null,
     category: {},
     articles: []
   }),
@@ -143,18 +143,18 @@ export default {
     onQueryChanged(val) {
       this.searchQuery = val
     },
-    handleCategoryClick(item) {
-      const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
-      const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
-      this.hideSiblings(siblings)
-    },
-    hideSiblings(siblings) {
-      this.timeline = gsap.timeline()
-      this.timeline.staggerTo(siblings, 0.5, {
-        ease: 'Power3.easeOut',
-        opacity: 0
-      }, 0.2)
-    }
+    // handleCategoryClick(item) {
+    //   const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
+    //   const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
+    //   this.hideSiblings(siblings)
+    // },
+    // hideSiblings(siblings) {
+    //   this.timeline = gsap.timeline()
+    //   this.timeline.staggerTo(siblings, 0.5, {
+    //     ease: 'Power3.easeOut',
+    //     opacity: 0
+    //   }, 0.2)
+    // }
   },
   created() {
     this.cleanUrl()

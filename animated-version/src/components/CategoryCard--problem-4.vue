@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {gsap} from 'gsap'
+// import {gsap} from 'gsap'
 import {formatDateFromNow} from '../utils'
 import slugify from 'slugify'
 
@@ -32,7 +32,7 @@ export default {
   },
   data: () => ({
     formatDateFromNow,
-    coordinates: {},
+    // coordinates: {},
   }),
   computed: {
     slug() {
@@ -42,16 +42,16 @@ export default {
   },
   methods: {
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
-    getCoordinates(item) {
-      this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
-      this.coordinates.height = gsap.getProperty(item, 'offsetHeight')
-      this.coordinates.top = gsap.getProperty(item, 'offsetTop')
-      this.coordinates.left = gsap.getProperty(item, 'offsetLeft')
-    },
+    // getCoordinates(item) {
+    //   this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
+    //   this.coordinates.height = gsap.getProperty(item, 'offsetHeight')
+    //   this.coordinates.top = gsap.getProperty(item, 'offsetTop')
+    //   this.coordinates.left = gsap.getProperty(item, 'offsetLeft')
+    // },
     handleCategoryClick() {
       this.$emit('click', this.item)
       const cardRef = this.$refs.categoryCard
-      this.getCoordinates(cardRef)
+      // this.getCoordinates(cardRef)
     }
   }
 }

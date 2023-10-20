@@ -33,7 +33,7 @@ export default {
   data: () => ({
     formatDateFromNow,
     coordinates: {},
-    replacement: null,
+    // replacement: null,
     timeline: null
   }),
   computed: {
@@ -44,16 +44,16 @@ export default {
   },
   methods: {
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
-    replaceCardWithPlaceholder(item) {
-      if(!this.replacement) {
-        this.replacement = document.createElement('div')
-        this.replacement.style.flex = `calc(${100/3}% - 20px)`
-        this.replacement.style.flexGrow = 0
-        this.replacement.style.visibility = 'hidden'
-        this.replacement.style.opacity = 0
-        item.insertAdjacentElement('afterend', this.replacement)
-      } else return
-    },
+    // replaceCardWithPlaceholder(item) {
+    //   if(!this.replacement) {
+    //     this.replacement = document.createElement('div')
+    //     this.replacement.style.flex = `calc(${100/3}% - 20px)`
+    //     this.replacement.style.flexGrow = 0
+    //     this.replacement.style.visibility = 'hidden'
+    //     this.replacement.style.opacity = 0
+    //     item.insertAdjacentElement('afterend', this.replacement)
+    //   } else return
+    // },
     getCoordinates(item) {
       this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
       this.coordinates.height = gsap.getProperty(item, 'offsetHeight')
@@ -76,7 +76,7 @@ export default {
     handleCategoryClick() {
       this.$emit('click', this.item)
       const cardRef = this.$refs.categoryCard
-      this.replaceCardWithPlaceholder(cardRef)
+      // this.replaceCardWithPlaceholder(cardRef)
       this.getCoordinates(cardRef)
       this.moveCard(cardRef)
     }

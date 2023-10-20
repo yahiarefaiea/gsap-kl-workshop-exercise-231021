@@ -33,7 +33,7 @@ export default {
   data: () => ({
     formatDateFromNow,
     coordinates: {},
-    timeline: null
+    // timeline: null
   }),
   computed: {
     slug() {
@@ -49,24 +49,24 @@ export default {
       this.coordinates.top = gsap.getProperty(item, 'offsetTop')
       this.coordinates.left = gsap.getProperty(item, 'offsetLeft')
     },
-    moveCard(item) {
-      const {width, height, top, left} = this.coordinates
-      gsap.set(item, {position: 'absolute', width, height, top, left})
-      this.timeline = gsap.timeline()
-      this.timeline.to(item, {
-        duration: 0.7,
-        ease: 'Power3.easeOut',
-        position: 'absolute',
-        top: 65,
-        left: 0,
-        transform: 'translate(-50%, -50%)'
-      })
-    },
+    // moveCard(item) {
+    //   const {width, height, top, left} = this.coordinates
+    //   gsap.set(item, {position: 'absolute', width, height, top, left})
+    //   this.timeline = gsap.timeline()
+    //   this.timeline.to(item, {
+    //     duration: 0.7,
+    //     ease: 'Power3.easeOut',
+    //     position: 'absolute',
+    //     top: 65,
+    //     left: 0,
+    //     transform: 'translate(-50%, -50%)'
+    //   })
+    // },
     handleCategoryClick() {
       this.$emit('click', this.item)
       const cardRef = this.$refs.categoryCard
       this.getCoordinates(cardRef)
-      this.moveCard(cardRef)
+      // this.moveCard(cardRef)
     }
   }
 }

@@ -186,7 +186,7 @@ p {
 }
 
 .section {
-  position: relative;
+  // position: relative;
   background-color: $light-gray;
   .container {
     position: relative;

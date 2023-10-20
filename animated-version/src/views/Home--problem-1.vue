@@ -2,8 +2,8 @@
 <div class="section">
   <div
     class="container"
-    :style="containerStyle"
   >
+    <!-- :style="containerStyle" -->
     <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
     <div class="grid-view">
@@ -68,15 +68,15 @@ export default {
     categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     },
-    containerStyle: () => {
-      return {
-        position: 'absolute',
-        top: 0,
-        left: '50%',
-        width: '985px',
-        marginLeft: `${-985/2}px`
-      }
-    }
+    // containerStyle: () => {
+    //   return {
+    //     position: 'absolute',
+    //     top: 0,
+    //     left: '50%',
+    //     width: '985px',
+    //     marginLeft: `${-985/2}px`
+    //   }
+    // }
   },
   watch: {
     searchQuery() {
