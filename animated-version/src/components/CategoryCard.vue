@@ -2,8 +2,6 @@
 <a
   class="category-card"
   :href="`#${slug}`"
-  ref="categoryCard"
-  @click="handleCategoryClick"
 >
   <div class="block">
     <img :src="`/icons/${item.icon}.png`">
@@ -21,7 +19,6 @@
 </template>
 
 <script>
-import {gsap} from 'gsap'
 import {formatDateFromNow} from '../utils'
 import slugify from 'slugify'
 
@@ -32,9 +29,6 @@ export default {
   },
   data: () => ({
     formatDateFromNow,
-    coordinates: {},
-    replacement: null,
-    timeline: null
   }),
   computed: {
     slug() {
@@ -44,42 +38,6 @@ export default {
   },
   methods: {
     createSlug: (title, id) => `${slugify(title, {lower: true})}-${id}`,
-    replaceCardWithPlaceholder(item) {
-      if(!this.replacement) {
-        this.replacement = document.createElement('div')
-        this.replacement.style.flex = `calc(${100/3}% - 20px)`
-        this.replacement.style.flexGrow = 0
-        this.replacement.style.visibility = 'hidden'
-        this.replacement.style.opacity = 0
-        item.insertAdjacentElement('afterend', this.replacement)
-      } else return
-    },
-    getCoordinates(item) {
-      this.coordinates.width = gsap.getProperty(item, 'offsetWidth')
-      this.coordinates.height = gsap.getProperty(item, 'offsetHeight')
-      this.coordinates.top = gsap.getProperty(item, 'offsetTop')
-      this.coordinates.left = gsap.getProperty(item, 'offsetLeft')
-    },
-    moveCard(item) {
-      const {width, height, top, left} = this.coordinates
-      gsap.set(item, {position: 'absolute', width, height, top, left})
-      this.timeline = gsap.timeline()
-      this.timeline.to(item, {
-        duration: 0.7,
-        ease: 'Power3.easeOut',
-        position: 'absolute',
-        top: 65,
-        left: 0,
-        transform: 'translate(-50%, -50%)'
-      })
-    },
-    handleCategoryClick() {
-      this.$emit('click', this.item)
-      const cardRef = this.$refs.categoryCard
-      this.replaceCardWithPlaceholder(cardRef)
-      this.getCoordinates(cardRef)
-      this.moveCard(cardRef)
-    }
   }
 }
 </script>

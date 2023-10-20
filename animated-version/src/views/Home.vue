@@ -2,8 +2,6 @@
 <div class="section">
   <div
     class="container"
-    ref="articlesContainer"
-    :style="containerStyle"
   >
     <tawk-breadcrumb :items="breadcrumbItems" :style="breadcrumbStyle" />
 
@@ -15,8 +13,6 @@
           v-for="(article, index) in articles"
           :key="`${kebabCase(article.title)}-${index}`"
           :item="article"
-          ref="articleCards"
-          :style="articleCardStyle"
         />
       </div>
     </div>
@@ -35,8 +31,6 @@
       :key="item.id"
       :item="item"
       :style="categoryCardStyle"
-      ref="categoryCards"
-      @click="handleCategoryClick(item)"
     />
   </div>
 </div>
@@ -45,7 +39,6 @@
 <script>
 import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
-import {gsap} from 'gsap'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard.vue'
 import ArticleCard from '../components/ArticleCard.vue'
@@ -64,7 +57,6 @@ export default {
     items: null,
     queryFilteredItems: null,
     searchQuery: '',
-    timeline: null,
     category: {},
     articles: []
   }),
@@ -75,18 +67,6 @@ export default {
     categoryCardStyle: () => {
       return {flex: `calc(${100/3}% - 20px)`, flexGrow: 0}
     },
-    articleCardStyle: () => {
-      return {visibility: 'hidden', opacity: 0}
-    },
-    containerStyle: () => {
-      return {
-        position: 'absolute',
-        top: 0,
-        left: '50%',
-        width: '985px',
-        marginLeft: `${-985/2}px`
-      }
-    }
   },
   watch: {
     searchQuery() {
@@ -149,32 +129,6 @@ export default {
     onQueryChanged(val) {
       this.searchQuery = val
     },
-    handleCategoryClick(item) {
-      const siblingsRefs = this.$refs.categoryCards.filter(card => card._props.item.id !== item.id)
-      const siblings = siblingsRefs.map(siblingCard => siblingCard.$el)
-      this.hideSiblings(siblings)
-    },
-    hideSiblings(siblings) {
-      this.timeline = gsap.timeline({
-        onComplete: () => {
-          const container = this.$refs.articlesContainer
-          const articles = this.$refs.articleCards.map(article => article.$el)
-          gsap.set(container, {zIndex: 10})
-          gsap.set(siblings, {visibility: 'hidden'})
-          gsap.set(articles, {visibility: 'visible'})
-
-          const timeline = gsap.timeline()
-          timeline.staggerTo(articles, 0.5, {
-            ease: 'Power3.easeOut',
-            opacity: 1
-          }, 0.2)
-        }
-      })
-      this.timeline.staggerTo(siblings, 0.5, {
-        ease: 'Power3.easeOut',
-        opacity: 0
-      }, 0.2)
-    }
   },
   created() {
     this.cleanUrl()
@@ -216,7 +170,6 @@ p {
 }
 
 .section {
-  position: relative;
   background-color: $light-gray;
   .container {
     position: relative;
