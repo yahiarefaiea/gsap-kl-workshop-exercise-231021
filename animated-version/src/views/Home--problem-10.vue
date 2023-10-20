@@ -47,7 +47,7 @@ import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
 import {gsap} from 'gsap'
 import Breadcrumb from '../components/Breadcrumb.vue'
-import CategoryCard from '../components/CategoryCard.vue'
+import CategoryCard from '../components/CategoryCard--problem-6.vue'
 import ArticleCard from '../components/ArticleCard.vue'
 import {eventBus} from '../utils'
 

@@ -42,6 +42,12 @@ import _, {isEmpty, kebabCase} from 'lodash'
 import axios from 'axios'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryCard from '../components/CategoryCard.vue'
+// previously: Home--problem-2
+// import CategoryCard from '../components/CategoryCard--problem-3.vue'
+// import CategoryCard from '../components/CategoryCard--problem-4.vue'
+// import CategoryCard from '../components/CategoryCard--problem-5.vue'
+// import CategoryCard from '../components/CategoryCard--problem-6.vue'
+// next: Home--problem-7
 import ArticleCard from '../components/ArticleCard.vue'
 import {eventBus} from '../utils'
 
